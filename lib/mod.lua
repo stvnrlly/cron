@@ -52,10 +52,13 @@ end
 
 m.redraw = function()
   tz = util.os_capture("ls -l /etc/localtime | cut -d '>' -f2 | cut -d '/' -f5,6")
+  now = util.os_capture('date "+%Y-%m-%d %H:%M"')
   screen.clear()
-  screen.move(64,32)
+  screen.move(64,18)
   screen.text_center('press k3 to reload crontab')
-  screen.move(64,48)
+  screen.move(64,34)
+  screen.text_center('now: '..now)
+  screen.move(64,50)
   screen.text_center('tz: '..tz)
   screen.update()
 end
